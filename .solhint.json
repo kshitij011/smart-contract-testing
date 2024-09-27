@@ -1,0 +1,23 @@
+{
+  "extends": "solhint:recommended",
+  "plugins": [],
+  "rules": {
+    "avoid-suicide": "error",
+    "avoid-sha3": "warn",
+    "indent": "error",
+    "line-length": "error",
+    "named-assignments": "error",
+    "no-empty-blocks": "error",
+    "no-mixed-assignment-operator": "error",
+    "no-redeclare": "error",
+    "no-uninitialized": "error",
+    "no-unused-vars": "error",
+    "no-undefined-vars": "error",
+    "no-visibility-modifiers": "error",
+    "pragma-visibility": "error",
+    "severity": {
+      "error": "error",
+      "warning": "warning"
+    }
+  }
+}

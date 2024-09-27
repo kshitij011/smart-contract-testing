@@ -1,0 +1,54 @@
+Notes:
+To run each individual test: `npx hardhat test test/Greeter.js`
+
+    ```npx eslint '**.*.js'```: This command makes things look nice in the code.
+                                Install the eslint package first ```npm i eslint@9.11.1```
+                                The code formating and styling is depricated in the latest version of eslint, but we can still install it as plugin "https://eslint.style/packages/default". eslint suggests using preetier.
+
+    ```npx eslint '**.*.js' --fix```: This line fixes the code on its own as much as possible.
+
+Preetier:
+    preetier is the industry standard when it comes to code formating
+    install: ```npm install prettier --save -dev```
+
+    To use prettier with eslint
+    ```npm install eslint-config-prettier --save-dev```
+    This will disable the formating rules in eslint that preetier is responsible for handling.
+
+    Also install prettier plugin:
+    ```npm install eslint-plugin-prettier --save-dev```
+    It runs prettier as eslint rule and reports differences as individual eslint issue.
+
+    To run prettier on a file:
+    ```npx pretiter test/Greeter.js```: Returns formatted file but does not change the original file.
+    ```npx pretiter test/Greeter.js --check```: Checks if the file needs to be formatted.
+    ```npx pretiter test/Greeter.js --write```: Changes and formats the original file.
+
+    prettier cannot be used with solidity, use solhint instead.
+
+Combined Eslint and Prettier:
+    To combine the functionalities of the eslint and prettier combine the scripts in the package.json.
+    ```
+        "scripts":{
+            "lint": "npm run lint:eslint && npm run lint:prettier",
+            "lint:eslint": "eslint --fix",
+            "lint:prettier": "prettier --write"
+        },
+    ```
+
+Solhint:
+    Used as a Solidity linter, Solhint detects a wide array of validation and security rules in compliance with Solidity's style guide.
+    Solhint comes with preconfigured sets of rules but allows the developer to change these rule sets, as well as manage configuration rules at the code level with specific comments.
+
+    New version of hardhat does not come with Solhint so install it manually and run command:
+    ```npm install -g solhint``` or ```npm install solhint```
+
+    Initialize the solhint:
+    ```(npx) solhint --init```
+
+    solhint docs: `https://eslint.org/docs/latest/use/getting-started`
+
+    Set the rules in config file link (https://protofire.github.io/solhint/)
+
+    Or,
+    install solidity-solhint extention, press F5, done.
