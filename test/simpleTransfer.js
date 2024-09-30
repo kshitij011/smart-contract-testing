@@ -1,5 +1,5 @@
 const {expect} = require("chai")
-const {ethers, helpers} = require("hardhat")
+const {ethers} = require("hardhat")
 
 describe("SimpleTransfer", function () {
     let contract;
@@ -16,6 +16,7 @@ describe("SimpleTransfer", function () {
         provider = await ethers.provider;
         let etherAmountInHex = ethers.toQuantity(ethers.toBeHex(ethers.parseEther("20000")));
 
+        // Set/Reset account balance
         await provider.send("hardhat_setBalance", [
             accounts[0].address,
             etherAmountInHex,
@@ -43,13 +44,35 @@ describe("SimpleTransfer", function () {
             expect(await provider.getBalance(contract.target)).to.be.equal(ethers.parseEther("10000"))
         })
 
-        it("account balance balance should be reduced to half", async function () {
+        it("account balance balance should be reduced a bit more than sent.", async function () {
             const tx = await contract.deposit({value: ethers.parseEther("10000")});
             await tx.wait();
             expect(await provider.getBalance(contract.target)).to.be.equal(ethers.parseEther("10000"));
 
             // Use fault taulerance (.closeTo) to handle deduction of gas fees.
             expect(await provider.getBalance(accounts[0].address)).to.be.closeTo(ethers.parseEther("10000"), ethers.parseEther("0.001"));
+        })
+    })
+
+    describe("withdraw", function () {
+        it("should transfer 10000 ethers to the contract", async function () {
+            const tx = await contract.deposit({value: ethers.parseEther("10000")})
+            await tx.wait();
+            expect(await provider.getBalance(contract.target)).to.be.equal(ethers.parseEther("10000"))
+        })
+
+        it("Account balance should be restored to 20000", async function () {
+            const tx = await contract.deposit({value: ethers.parseEther("10000")});
+            await tx.wait();
+            expect(await provider.getBalance(contract.target)).to.be.equal(ethers.parseEther("10000"));
+
+            const txWithdraw = await contract.withdraw();
+            await txWithdraw.wait();
+
+            expect(await provider.getBalance(contract.target)).to.be.equal(0);
+            expect(await provider.getBalance(accounts[0].address)).to.be.closeTo(ethers.parseEther("20000"), ethers.parseEther("0.001"))
+            console.log("Account address: ", await provider.getBalance(accounts[0].address));
+
         })
     })
 

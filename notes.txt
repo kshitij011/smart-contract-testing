@@ -52,3 +52,23 @@ Solhint:
 
     Or,
     install solidity-solhint extention, press F5, done.
+
+Coverage:
+    To see how much code has been covered by tests run:
+    ```npx hardhat coverage```
+
+    To view in html:
+    ```coverage/lcov-report/index.html```
+
+Slither:
+    Slither is a tool that helps you identify potential vulnerabilities in your smart contract
+    ```pip3 install  slither-analyzer```
+
+    Find potential issues and threats in contract
+    ```slither .```
+
+    If some warnings are not threats,  you can ignore them next time by running:
+    ```slither . -triage```
+    Then type 'All' for all the  warnings, and then type ignore for the ones you want to ignore.
+    Next time you run `slither .`, the same warnings will not show
+
