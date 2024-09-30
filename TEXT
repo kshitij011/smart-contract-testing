@@ -1,0 +1,170 @@
+Mutation testing report:
+Number of mutations:    15
+Killed:                 9 / 15
+
+Mutations:
+Mutation:
+    File: /home/comp/Documents/Testing/contracts/ExternalReturn.sol
+    Line nr: 11
+    Result: Error
+    Original line:
+                 balances[_to] += 1;
+
+    Mutated line:
+                 balances[_to] -= 1;
+
+
+Mutation:
+    File: /home/comp/Documents/Testing/contracts/TimeLock.sol
+    Line nr: 20
+    Result: Lived
+    Original line:
+                 require(block.timestamp - accounts[msg.sender].lastDeposit > DURATION, "cannot withdraw yet");
+
+    Mutated line:
+                 require(block.timestamp - accounts[msg.sender].lastDeposit >= DURATION, "cannot withdraw yet");
+
+
+Mutation:
+    File: /home/comp/Documents/Testing/contracts/TimeLock.sol
+    Line nr: 20
+    Result: Killed
+    Original line:
+                 require(block.timestamp - accounts[msg.sender].lastDeposit > DURATION, "cannot withdraw yet");
+
+    Mutated line:
+                 require(block.timestamp - accounts[msg.sender].lastDeposit <= DURATION, "cannot withdraw yet");
+
+
+Mutation:
+    File: /home/comp/Documents/Testing/contracts/TimeLock.sol
+    Line nr: 20
+    Result: Killed
+    Original line:
+                 require(block.timestamp - accounts[msg.sender].lastDeposit > DURATION, "cannot withdraw yet");
+
+    Mutated line:
+                 require(block.timestamp + accounts[msg.sender].lastDeposit > DURATION, "cannot withdraw yet");
+
+
+Mutation:
+    File: /home/comp/Documents/Testing/contracts/TimeLock.sol
+    Line nr: 15
+    Result: Error
+    Original line:
+                 accounts[msg.sender].balance += msg.value;
+
+    Mutated line:
+                 accounts[msg.sender].balance -= msg.value;
+
+
+Mutation:
+    File: /home/comp/Documents/Testing/contracts/SimpleTransfer.sol
+    Line nr: 7
+    Result: Error
+    Original line:
+                 accounts[msg.sender] += msg.value;
+
+    Mutated line:
+                 accounts[msg.sender] -= msg.value;
+
+
+Mutation:
+    File: /home/comp/Documents/Testing/contracts/Accounts.sol
+    Line nr: 11
+    Result: Killed
+    Original line:
+                 require(msg.sender == admin, "only admin");
+
+    Mutated line:
+                 require(msg.sender != admin, "only admin");
+
+
+Mutation:
+    File: /home/comp/Documents/Testing/contracts/Accounts.sol
+    Line nr: 11
+    Result: Killed
+    Original line:
+                 require(msg.sender == admin, "only admin");
+
+    Mutated line:
+                 require(msg.sender != admin, "only admin");
+
+
+Mutation:
+    File: /home/comp/Documents/Testing/contracts/Accounts.sol
+    Line nr: 15
+    Result: Killed
+    Original line:
+             function changeAdmin(address _admin) external onlyAdmin {
+
+    Mutated line:
+             function changeAdmin(address _admin) external  {
+
+
+Mutation:
+    File: /home/comp/Documents/Testing/contracts/BigNumbers.sol
+    Line nr: 14
+    Result: Equivalent
+    Original line:
+                 number = type(uint256).max;
+
+    Mutated line:
+                 number = max;
+
+
+Mutation:
+    File: /home/comp/Documents/Testing/contracts/Lock.sol
+    Line nr: 14
+    Result: Lived
+    Original line:
+                     block.timestamp < _unlockTime,
+
+    Mutated line:
+                     block.timestamp <= _unlockTime,
+
+
+Mutation:
+    File: /home/comp/Documents/Testing/contracts/Lock.sol
+    Line nr: 27
+    Result: Killed
+    Original line:
+                 require(msg.sender == owner, "You aren't the owner");
+
+    Mutated line:
+                 require(msg.sender != owner, "You aren't the owner");
+
+
+Mutation:
+    File: /home/comp/Documents/Testing/contracts/Lock.sol
+    Line nr: 14
+    Result: Killed
+    Original line:
+                     block.timestamp < _unlockTime,
+
+    Mutated line:
+                     block.timestamp >= _unlockTime,
+
+
+Mutation:
+    File: /home/comp/Documents/Testing/contracts/Lock.sol
+    Line nr: 26
+    Result: Killed
+    Original line:
+                 require(block.timestamp >= unlockTime, "You can't withdraw yet");
+
+    Mutated line:
+                 require(block.timestamp < unlockTime, "You can't withdraw yet");
+
+
+Mutation:
+    File: /home/comp/Documents/Testing/contracts/Lock.sol
+    Line nr: 27
+    Result: Killed
+    Original line:
+                 require(msg.sender == owner, "You aren't the owner");
+
+    Mutated line:
+                 require(msg.sender != owner, "You aren't the owner");
+
+

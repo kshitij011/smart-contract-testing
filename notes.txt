@@ -72,3 +72,19 @@ Slither:
     Then type 'All' for all the  warnings, and then type ignore for the ones you want to ignore.
     Next time you run `slither .`, the same warnings will not show
 
+Vertigo:
+    Vertigo is used for mutation testing, install Vertigo
+    ```pip3 install --user eth-vertigo```
+
+    Install truffle:
+    ```npm i truffle```
+
+    Run Tests:
+    ```vertigo run --hardhat-parallel 8```
+    This will run the tests in parallel, and the number 8 is the number of workers.
+    You can change it to whatever number you want.
+
+    Output core test results to file
+    ```vertigo run --hardhat-parallel 8 --output TEXT```
+
+
